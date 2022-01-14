@@ -1,59 +1,116 @@
 import React from "react";
 import {useParams } from "react-router-dom";
+import YearCalendar from "./YearCalendar";
+import MonthCalendar from "./MonthCalendar";
 import "./Dashboard.css";
 
-const YearCalendar = () => (
-    <div className="Dashboard-yearCalendar d-none d-md-block">
-        <p>
-            [x][x][x][x][x] [x][x][x][x][x] [x][x][x][x][x] <br />
-            [x][x][x][x][x] [x][x][x][x][x] [x][x][x][x][x] <br />
-            [x][x][x][x][x] [x][x][x][x][x] [x][x][x][x][x] <br />
-            [x][x][x][x][x] [x][x][x][x][x] [x][x][x][x][x] <br />
-            [x][x][x][x][x] [x][x][x][x][x] [x][x][x][x][x] <br />
-            [x][x][x][x][x] [x][x][x][x][x] [x][x][x][x][x] <br />
-        </p>
-    </div>
-);
 
-const MonthCalendar = () => {
-    const weekInMonth = 5;
-    const weekLine = (dateOfTheFirstDayOfTheWeek, weekJobs) => (
-        <tr style={{height: "48px"}}>
-            {weekLineDescription(dateOfTheFirstDayOfTheWeek)}
-            {weekLineDays(weekJobs)}
-        </tr>
-    );
-    const weekLineDescription = (weekdate) => (<th scope="row" className="Dasboard-monthCalendar-weekCell">{weekdate}</th>);
-    const weekLineDays = (jobs) => jobs.map((jour, jidx) => 
-        <td key={jidx} className="Dasboard-monthCalendar-dayCell">
-            {jour.split(" ").map((job, idx) => (<span key={idx} className="badge bg-primary">{job}</span>))}
-        </td>
-    );
-    return (
-        <div className="Dashboard-monthCalendar">
-            <h3 className="Dashboard-monthCalendar text-uppercase">January</h3>
-            <table className="table table-sm table-responsive table-hover">
-                <thead>
-                    <tr className="Dashboard-monthCalendar-weekCell">
-                        <th scope="col">Weeks</th>
-                        <th scope="col">Mo</th>
-                        <th scope="col">Tu</th>
-                        <th scope="col">We</th>
-                        <th scope="col">Th</th>
-                        <th scope="col">Fr</th>
-                        <th scope="col">We</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {weekLine("03/01", ["5 FDG2","5 FDG2","5 FDG2","5 FDG2","5 FDG2",""])}
-                    {weekLine("10/01", ["5 FDG2","5 FDG2","5 FDG2","5 FDG2","5 FDG2",""])}
-                    {weekLine("17/01", ["5 FDG2","5 FDG2","5 FDG2","5 FDG2","5 FDG2",""])}
-                    {weekLine("24/01", ["5 FDG2","5 FDG2","5 FDG2","5 FDG2","5 FDG2",""])}
-                    {weekLine("31/01", ["5 FDG2","5 FDG2","5 FDG2","5 FDG2","5 FDG2",""])}
-                </tbody>
-            </table>
-        </div>
-)};
+
+const months = [
+    {month_index: 1, weeks: [
+        {date: "2022-01-03", 
+                jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
+                absences: {1: "", 2: "", 3: "co", 4: "co", 5: "", 6: ""},
+                tasks: ["Stock"]
+        },
+        {date: "2022-01-10", 
+                jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
+                absences: {1: "", 2: "", 3: "", 4: "", 5: "", 6: ""},
+                tasks: []},
+        {date: "2022-01-17", 
+                jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
+                absences: {1: "", 2: "", 3: "", 4: "", 5: "", 6: ""},
+                tasks: []},
+        {date: "2022-01-24", 
+                jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
+                absences: {1: "", 2: "", 3: "", 4: "", 5: "", 6: ""},
+                tasks: ["Stock"]},
+        {date: "2022-01-31", 
+                jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
+                absences: {1: "", 2: "", 3: "", 4: "mi", 5: "", 6: ""},
+                tasks: []}
+    ]},
+    {month_index: 2, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 3, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 4, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 5, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 6, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 7, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 8, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 9, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 10, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 11, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+    {month_index: 12, weeks: [
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []},
+        {date: "", jobs: {}, absences: {}, tasks: []}
+    ]},
+];
+
+const weeks = months[0].weeks;
+
 
 const Dashboard = () => {
     const {user_id} = useParams();
@@ -63,10 +120,10 @@ const Dashboard = () => {
         <h1 className="Dashboard-title text-capitalize">Dashboard</h1>
 
         <h2 className="Dashboard-userName text-uppercase">Salim Joly</h2>
-        <YearCalendar />
 
-        <MonthCalendar />
+        <YearCalendar months={months} />
 
+        <MonthCalendar weeks={weeks} />
         
     </div>);
 }

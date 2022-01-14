@@ -18,9 +18,26 @@
 
 .Dashboard-yearCalendar {
     font-family: 'Roboto', sans-serif;
-    border: 1px solid rgba(128, 128, 128, 0.4);
+    border: none;
     padding: 1em 0 0 0;
     margin: 1em 0 1em 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.Dashboard-yearCalendar table,th, td {
+    border:none;
+    border-spacing : 1px;
+    border-collapse:separate;
+    margin: 0 auto;
+}
+
+.Dashboard-yearCalendar td {
+    border-radius: 3px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid black;
+    
 }
 
 .Dashboard-month {
@@ -32,4 +49,5 @@
 
 .Dashboard-monthCalendar-dayCell {
     font-family: 'Source Code Pro', monospace;
+    background-color: aqua;
 }
