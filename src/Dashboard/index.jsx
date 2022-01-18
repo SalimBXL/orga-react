@@ -161,11 +161,11 @@ const weeks = calendarData.months[0].weeks;
 
 const Dashboard = () => {
     const {user_id} = useParams();
-    const [currentMonth, setCurrentMonth] = useState(null);
+    const [dashboardDate, setDashboardDate] = useState(new Date());
 
     return (<div className="Dashboard vstack">
         
-        <h1 className="Dashboard-title text-capitalize">Dashboard</h1>
+        <h1 className="Dashboard-title text-capitalize">Dashboard - {dashboardDate.getFullYear()}</h1>
 
         <h2 className="Dashboard-userName text-uppercase">Salim Joly</h2>
 
@@ -177,11 +177,11 @@ const Dashboard = () => {
 }
 
 Dashboard.propTypes = {
-    currentMonth: PropTypes.object
+    
 }
 
 Dashboard.defaultProps = {
-    currentMonth: new Date()
+    
 }
 
 export default Dashboard;

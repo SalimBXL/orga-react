@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { absenceColor, jobColor } from "../helpers";
+import { getDateYMDFormated } from "../helpers";
 import "./Dashboard.css";
 
 const MONTHNAME = {
@@ -8,7 +9,7 @@ const MONTHNAME = {
     7: "july", 8: "august", 9: "september", 10: "october", 11: "november", 12: "december"
 };
 
-const YearCalendar = ({months}) => {
+const YearCalendar = ({calendarData}) => {
 
     const printMonth = (monthIndex, weeks) => {
         
@@ -46,7 +47,7 @@ const YearCalendar = ({months}) => {
     return (
         <div className="Dashboard-yearCalendar d-none d-md-block">
             <div className="hstack">
-                {months.map((month, idx) => (
+                {calendarData.months.map((month, idx) => (
                     <div key={idx} className="col">
                         {printMonth(month.month_index, month.weeks)}
                     </div>)
@@ -57,11 +58,49 @@ const YearCalendar = ({months}) => {
 };
 
 YearCalendar.propTypes = {
-    months: PropTypes.array
+    YearCalendar: PropTypes.shape({
+        year: PropTypes.number,
+        months: PropTypes.arrayOf(PropTypes.shape({
+            month_index: PropTypes.number, 
+            weeks: PropTypes.arrayOf(PropTypes.shape({
+                date: PropTypes.string, 
+                jobs: PropTypes.shape({
+                    1: PropTypes.string,
+                    2: PropTypes.string,
+                    3: PropTypes.string,
+                    4: PropTypes.string,
+                    5: PropTypes.string
+                }),
+                absences: PropTypes.shape({
+                    1: PropTypes.string,
+                    2: PropTypes.string,
+                    3: PropTypes.string,
+                    4: PropTypes.string,
+                    5: PropTypes.string
+                }),
+                tasks: PropTypes.array
+            }))
+        }))
+    })
 }
 
 YearCalendar.defaultProps = {
-    months: []
+    YearCalendar: {
+        year: (new Date()).getFullYear(),
+        months: [
+            {
+                month_index: (new Date().getMonth()+1),
+                weeks: [
+                    {
+                        date: getDateYMDFormated(),
+                        jobs: {1: "", 2: "", 3: "", 4: "", 5: ""},
+                        absences: {1: "", 2: "", 3: "", 4: "", 5: ""},
+                        tasks: []
+                    }
+                ]
+            }
+        ]
+    }
 }
 
 export default YearCalendar;
