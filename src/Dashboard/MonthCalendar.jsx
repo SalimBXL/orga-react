@@ -1,16 +1,19 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import uuid from "react-uuid";
 import { absenceColor } from "../helpers";
 import "./Dashboard.css";
 
 const MonthCalendar = ({weeks}) => {
     
-    const weekLine = ({date, jobs, absences, tasks}) => (
-        <tr key={date} style={{height: "48px"}}>
+    const weekLine = ({date, jobs, absences, tasks}) => {
+        const key = date ? date : uuid();
+        return (
+        <tr key={key} style={{height: "48px"}}>
             {weekLineDescription(date, tasks)}
             {weekLineDays(jobs, absences)}
         </tr>
-    );
+    )};
 
     const weekLineDescription = (weekdate, tasks) => (
         <th scope="row" className="Dashboard-monthCalendar-weekCell">
@@ -34,7 +37,6 @@ const MonthCalendar = ({weeks}) => {
 
     return (
         <div className="Dashboard-monthCalendar">
-            <h3 className="Dashboard-monthCalendar text-uppercase">January</h3>
             <table className="table table-sm table-responsive table-hover">
                 <thead>
                     <tr >

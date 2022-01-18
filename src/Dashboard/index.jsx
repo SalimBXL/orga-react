@@ -1,167 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {useParams } from "react-router-dom";
-import PropTypes from "prop-types";
+import { MONTHNAME } from "../helpers";
+import axios from "axios";
 import YearCalendar from "./YearCalendar";
 import MonthCalendar from "./MonthCalendar";
 import "./Dashboard.css";
-import { getDateYMDFormated } from "../helpers";
 
+import jsonData from "../data/calendar.json";
 
+const API_URL = "127.0.0.1";
 
-const calendarData = {
-    year: 2022,
-    months: [
-        {
-            month_index: 1, 
-            weeks: [
-                {
-                    date: "2022-01-03", 
-                    jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
-                    absences: {1: "", 2: "", 3: "co", 4: "co", 5: "", 6: ""},
-                    tasks: ["Stock"]
-                },
-                {
-                    date: "2022-01-10", 
-                    jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
-                    absences: {1: "", 2: "", 3: "", 4: "", 5: "", 6: ""},
-                    tasks: []
-                },
-                {
-                    date: "2022-01-17", 
-                    jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
-                    absences: {1: "", 2: "", 3: "", 4: "", 5: "", 6: ""},
-                    tasks: []
-                },
-                {
-                    date: "2022-01-24", 
-                    jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
-                    absences: {1: "", 2: "", 3: "", 4: "", 5: "", 6: ""},
-                    tasks: ["Stock"]
-                },
-                {
-                    date: "2022-01-31", 
-                    jobs: {1: "5 FDG2", 2: "5 FDG2", 3: "5 FDG2", 4: "5 FDG2", 5: "5 FDG2", 6: ""},
-                    absences: {1: "", 2: "", 3: "", 4: "mi", 5: "", 6: ""},
-                    tasks: []
-                }
-            ]
-        },
-        {
-            month_index: 2, weeks: [
-                {
-                    date: "", 
-                    jobs: {}, 
-                    absences: {}, 
-                    tasks: []},
-                {
-                    date: "", jobs: {}, absences: {}, tasks: []},
-                {
-                    date: "", jobs: {}, absences: {}, tasks: []},
-                {
-                    date: "", jobs: {}, absences: {}, tasks: []},
-                {
-                    date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 3, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 4, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 5, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 6, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 7, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 8, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 9, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 10, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 11, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-        {
-            month_index: 12, weeks: [
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []},
-                {date: "", jobs: {}, absences: {}, tasks: []}
-            ]
-        },
-    ]
-};
-
-const weeks = calendarData.months[0].weeks;
-
+const SpinWheel = () => <h1>LOADING...</h1>;
 
 const Dashboard = () => {
     const {user_id} = useParams();
     const [dashboardDate, setDashboardDate] = useState(new Date());
+    const [calendarData, setCalendarData] = useState(null);
+    const [fetchingCalendarData, setFetchingCalendarData] = useState(false);
+
+    function handleYearCalendarClick(monthIndex) {
+        setDashboardDate(prev => {
+            const year = prev.getFullYear().toString();
+            const day = prev.getDate().toString();
+            const month = monthIndex < 10 ? `0${monthIndex}` : monthIndex.toString();
+            const newDate = new Date(`${year}-${month}-${day}`);
+            return newDate;
+        });
+    }
+
+    async function getCalendarData() {
+        setFetchingCalendarData(true);
+        
+        //const data = await axios.get(API_URL);
+        const data = jsonData;
+        
+        setCalendarData((prev) => {
+            setFetchingCalendarData(false);
+            return data;
+        });
+       
+    }
+
+    useEffect(() => {    
+        getCalendarData();
+    }, []);
+
+    
+    const RenderCalendars = () => {
+        const month = dashboardDate.getMonth();
+        const weeks = calendarData.months[month].weeks;
+        return (
+        <div>
+            <YearCalendar calendarData={calendarData} handleClick={handleYearCalendarClick}/>
+            <h3 className="Dashboard-monthCalendar text-uppercase">
+                {MONTHNAME[month+1]}
+            </h3>
+            <MonthCalendar weeks={weeks} />
+        </div>)};
 
     return (<div className="Dashboard vstack">
         
@@ -169,19 +64,12 @@ const Dashboard = () => {
 
         <h2 className="Dashboard-userName text-uppercase">Salim Joly</h2>
 
-        <YearCalendar months={calendarData} />
-
-        <MonthCalendar weeks={weeks} />
-        
+        {fetchingCalendarData 
+            ? <SpinWheel />
+            : calendarData && <RenderCalendars />
+        }
     </div>);
 }
 
-Dashboard.propTypes = {
-    
-}
-
-Dashboard.defaultProps = {
-    
-}
 
 export default Dashboard;
