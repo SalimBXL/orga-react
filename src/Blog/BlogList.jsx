@@ -5,38 +5,44 @@ import BlogListEntry from "./BlogListEntry";
 import "./Blog.css";
 
 const BlogList = ({articles}) => {
-    return (articles.length < 1)
-        ? <p className="Blog-article">No article found.</p>
-        : articles.map((article) => {
-            const [id, title, body, is_logbook, is_approuved] = article;
-            const bgColor = (!is_logbook)
-                ? "border-dark text-dark"
-                : is_approuved
-                    ? "border-success text-success"
-                    : "border-danger text-danger"
-            const style = (is_logbook && !is_approuved)
-                ? {"fontFamily": "'Roboto', sans-serif"}
-                : {}
-            const iconToDisplay = is_logbook
-                ? is_approuved
-                    ? "bi bi-journal-check"
-                    : "bi bi-exclamation-circle"
-                : ""
 
-            return (
-                <BlogListEntry
-                    id={id}
-                    title={title}
-                    body={body}
-                    isLogBook={is_logbook}
-                    isApprouved={is_approuved}
-                    bgColor={bgColor}
-                    style={style}
-                    iconToDisplay={iconToDisplay}
-                />
-            )
-        }
-    )
+    if (articles.length < 1) return <p className="Blog-article">No article found.</p>;
+
+    return articles.map((article) => {
+        const bgColor = (!article.is_logbook)
+            ? "border-dark text-dark"
+            : article.is_approuved
+                ? "border-success text-success"
+                : "border-danger text-danger";
+        const style = (article.is_logbook && !article.is_approuved)
+            ? {"fontFamily": "'Roboto', sans-serif"}
+            : {};
+        const iconToDisplay = article.is_logbook
+            ? article.is_approuved
+                ? "bi bi-journal-check"
+                : "bi bi-exclamation-circle"
+            : "";
+
+        return (
+            <BlogListEntry
+                key={article.id}
+                id={article.id}
+                title={article.title}
+                body={article.body}
+                isLogBook={article.is_logbook}
+                isApprouved={article.is_approuved}
+                bgColor={bgColor}
+                style={style}
+                iconToDisplay={iconToDisplay}
+                dates={{
+                    "created": article.date_created,
+                    "modified": article.date_modified,
+                    "approuved": article.date_approuved
+                }}
+                approuvedBy={article.approuved_by}
+            />
+        );
+    });
 };
 
 BlogList.propTypes = {

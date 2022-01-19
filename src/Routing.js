@@ -10,7 +10,7 @@ const Routing = () => {
             <Route path="*" element={<h1><i className="bi-alarm text-success"/></h1>} />
             <Route path="/dashboard/:user_id" element={<Dashboard />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:article_id" element={<Blog />} />
+            {/*<Route path="/blog/:article_id" element={<Blog />} />*/}
       </Routes>
     );
 }
