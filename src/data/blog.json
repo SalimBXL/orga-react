@@ -1,0 +1,59 @@
+{
+    "articles": [
+        { 
+            "id": 0,
+            "date_created": "2022-01-01 09:00:00",
+            "date_modified": "2022-01-17 10:00:00",
+            "date_approuved": "",
+            "approuved_by": null,
+            "is_approuved": false,
+            "is_logbook": false,
+            "title": "Lorem ipsum dolor sit amet",
+            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur semper ipsum, eget scelerisque nunc maximus at. Suspendisse potenti. Sed tristique semper rhoncus. Nunc ante arcu, posuere in tortor non, dictum efficitur massa. In commodo convallis erat et sagittis. Donec porttitor metus in quam vehicula commodo. Vivamus eget fermentum risus. Maecenas ac nisl euismod, aliquam est eget, sodales ipsum. Proin aliquet dolor ligula, id ultricies sem posuere et. Mauris sagittis nibh eget metus volutpat, ac viverra leo egestas. Aliquam metus lorem, sagittis in gravida vel, venenatis at tortor. Sed finibus dolor vulputate, accumsan eros non, posuere ipsum. Quisque aliquam mi at vestibulum sodales. Proin et sagittis orci."
+        },
+        { 
+            "id": 1,
+            "date_created": "2022-01-05 12:00:00",
+            "date_modified": "2022-01-05 12:00:00",
+            "date_approuved": "",
+            "approuved_by": null,
+            "is_approuved": false,
+            "is_logbook": false,
+            "title": "Curabitur non metus eu dolor fringilla luctus",
+            "body": "Curabitur non metus eu dolor fringilla luctus. Phasellus eget metus tempor, mattis nibh in, vulputate lorem. Donec cursus tellus sollicitudin, fringilla augue at, interdum sem. Vivamus in consequat metus, sollicitudin egestas libero. Mauris facilisis ullamcorper turpis, ac posuere orci condimentum sed. In in metus ut purus tristique euismod. Maecenas egestas sem massa, vel suscipit sem sollicitudin eget. Nullam finibus a orci sit amet facilisis. Cras eget congue felis. Sed malesuada, felis ut gravida iaculis, dolor sem dapibus nunc, ornare pretium nisi nunc a turpis. In commodo tincidunt arcu ac blandit."
+        },
+        { 
+            "id": 2,
+            "date_created": "2022-01-06 09:15:00",
+            "date_modified": "2022-01-10 10:23:00",
+            "date_approuved": "",
+            "approuved_by": null,
+            "is_approuved": false,
+            "is_logbook": true,
+            "title": "Sed aliquam magna sed metus lacinia pellentesque",
+            "body": "Sed aliquam magna sed metus lacinia pellentesque. Sed eu velit non dui cursus ultrices. Curabitur arcu nunc, sollicitudin vel aliquam ut, scelerisque nec velit. Nulla pulvinar arcu a neque ullamcorper dignissim. Morbi elit felis, aliquam quis nisl eu, semper malesuada turpis. Quisque sagittis nisl a ex tempus interdum sit amet in diam. Aenean bibendum laoreet diam, ut mattis enim. Maecenas vehicula dolor quam, non sollicitudin enim sagittis sed. Curabitur diam quam, lacinia ut dolor sit amet, maximus molestie justo. Aliquam vitae ex ornare, consequat ipsum eu, pharetra lorem. Donec imperdiet vulputate urna, a luctus ante scelerisque lobortis. Vivamus id condimentum magna. Duis fringilla interdum dui, et tristique leo pulvinar ac."
+        },
+        { 
+            "id": 3,
+            "date_created": "2022-01-17 15:05:00",
+            "date_modified": "2022-01-19 16:10:00",
+            "date_approuved": "2022-01-19",
+            "is_approuved": true,
+            "approuved_by": 4,
+            "is_logbook": true,
+            "title": "Maecenas varius tellus arcu",
+            "body": "Maecenas varius tellus arcu, ac suscipit arcu tincidunt et. Vivamus id ante iaculis, tincidunt lorem a, efficitur erat. Curabitur scelerisque auctor aliquet. Vivamus luctus scelerisque metus et finibus. Morbi accumsan cursus odio. Etiam congue risus eu libero lacinia, ut varius magna pellentesque. Quisque rutrum massa id nunc egestas, quis convallis ipsum volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam justo turpis, sagittis id fringilla ac, fermentum eget nisi. Fusce fermentum, lorem congue consequat dictum, arcu justo dictum risus, nec egestas nisl nulla nec sapien. Phasellus volutpat fermentum tortor ac venenatis. Phasellus in dui at lacus malesuada ultricies sed ac tellus. In lacinia pretium pharetra. Duis at nisl aliquam, ullamcorper purus nec, fringilla leo. Fusce vehicula, purus vitae consequat dignissim, leo nisi condimentum nulla, eget rhoncus nunc nibh ornare diam. Morbi eleifend augue dolor."
+        },
+        { 
+            "id": 4,
+            "date_created": "2022-01-19 12:00:00",
+            "date_modified": "2022-01-19 16:03:00",
+            "date_approuved": "",
+            "approuved_by": null,
+            "is_approuved": false,
+            "is_logbook": false,
+            "title": "Aenean interdum sem a risus viverra sodales",
+            "body": "Aenean interdum sem a risus viverra sodales. Mauris ut imperdiet mauris. Nunc posuere mauris vitae erat ultrices interdum. Aenean et porta diam. In cursus, nisi ac luctus placerat, nibh purus rhoncus nunc, sed tristique nibh arcu quis justo. Aliquam mattis facilisis felis, eu lobortis augue. Donec elementum, leo porta posuere lacinia, lectus massa sodales erat, quis tristique velit diam vitae nibh. Sed varius in nulla sed iaculis. Nulla vestibulum diam aliquet rutrum aliquam."
+        }
+    ]
+}

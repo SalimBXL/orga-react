@@ -3,27 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 
 const APP_TITLE = "orga";
 const LINKS = {
-    dashboard: "/dashboard/7"
+    dashboard: "/dashboard/7",
+    blog: "/blog"
 };
-/*
-const NavBarOffCanvas = ({items}) => (
-    <nav className="navbar navbar-dark navbar-expand-lg bg-dark ">
-        <div className="container-fluid">
-            <Link className="navbar-brand text-capitalize" to="/">{APP_TITLE}</Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div className="offcanvas-header bg-dark">
-                    <h5 className="offcanvas-title" id="offcanvasNavbarLabel"> </h5>
-                    <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
-                </div>
-                <div className="offcanvas-body bg-dark">{items}</div>
-            </div>
-        </div>
-    </nav>
-);
-*/
+
 const NavBar = ({items}) => (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div className="container-fluid">
@@ -37,8 +20,6 @@ const NavBar = ({items}) => (
         </div>
     </nav>
 );
-
-
 
 const Navbar = () => {
     const menu = () => (
