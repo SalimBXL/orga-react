@@ -5,28 +5,35 @@ const ARTICLE_LIST_ITEM_LENGTH = 60;
 
 const BlogListEntry = ({id, title, body, isLogBook, isApprouved, bgColor, style, iconToDisplay, dates, approuvedBy}) => {
     
+    const _title = title;
+
+    const EntryModal = () => {
+        return (
+            <div className="modal" id="myModal">
+                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">
+                                {_title}
+                            </h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            {body}
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>
         
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">
-                            {title}
-                        </h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                <div className="modal-body">
-                    {body}
-                </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <EntryModal />
 
         <div key={id} className={`card ${bgColor} mb-3`} style={{style}}>
 
@@ -40,7 +47,11 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, bgColor, style,
                             <i className={iconToDisplay} />
                         </button>
                     }
-                    <button type="button" className="Blog-entry-title-button btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" 
+                        className="Blog-entry-title-button btn btn-sm btn-outline-secondary" 
+                        //data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        //</div>onClick={}
+                        >
                         <i className="bi bi-eye" />
                     </button>
                 </div>
@@ -68,6 +79,7 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, bgColor, style,
                 </p>
             </div>
         </div>
+
         </>
     )
 };
