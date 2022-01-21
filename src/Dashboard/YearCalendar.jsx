@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { absenceColor, jobColor, getDateYMDFormated, MONTHNAME } from "../helpers";
+import { absenceColor, jobColor, getDateYMDFormated, MONTHNAME } from "../helpers/helpers";
 import "./Dashboard.css";
 
 const YearCalendar = ({calendarData, handleClick}) => {

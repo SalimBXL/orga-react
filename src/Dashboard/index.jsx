@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useParams } from "react-router-dom";
-import { MONTHNAME } from "../helpers";
+import SpinWheel from "../helpers/SpinWheel";
+import { MONTHNAME } from "../helpers/helpers";
 import axios from "axios";
 import YearCalendar from "./YearCalendar";
 import MonthCalendar from "./MonthCalendar";
@@ -9,8 +10,6 @@ import "./Dashboard.css";
 import jsonData from "../data/calendar.json";
 
 const API_URL = "127.0.0.1";
-
-const SpinWheel = () => <h1>LOADING...</h1>;
 
 const Dashboard = () => {
     const {user_id} = useParams();

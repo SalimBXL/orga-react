@@ -2,6 +2,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.Blog-pagination {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+}
+
 .Blog-spin {
     font-size: 2em;
     width: 100%;
@@ -13,64 +18,50 @@
     color: hsla(0, 0%, 50%, 0.4);
 }
 
-.Blog-title {
-
+.Blog-no-entry {
+    font-size: larger;
+    font-style: italic;
 }
 
 .Blog-entry {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0.5em 0 0 0.5em;
-    margin: 1em;
-    width: auto;
-}
-.Blog-entry-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-.Blog-entry-title {
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    padding: 0.5em 0.5em 0 0.5em;
+    margin: 0;
 }
+
+.Blog-entry-title {
+    text-align: left;
+}
+
 .Blog-entry-title-buttons {
     margin: 0;
     padding: 0;
 }
+
 .Blog-entry-title-button {
-    margin: 0 0 0 0.5em;
+    margin: 0 0 0.5em 0.5em;
 }
+
 .Blog-entry-text {
-    font-family: 'Montserrat', sans-serif;
     text-align: left;
     margin: 0;
+    padding: 0 0 0 0.2em;
 }
-.Blog-entry-misc {
-    font-family: 'Montserrat', sans-serif;
+
+.Blog-entry-misc, .Blog-entry-misc-logbook {
     text-align: right;
     font-size: 0.5em;
-    margin: 0;
+    margin: 0 0 0 0;
     color: hsla(0, 0%, 50%, 0.8);
 }
 
-.Blog-article {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+.Blog-entry-misc {
+    padding: 0 1em 1em 0;
 }
 
-.Blog-article-title {
-    align-items: flex-start;
-
-}
-
-.Blog-article-body {
-
+.Blog-entry-misc-logbook {
+    padding: 0 1em 0 0;
 }

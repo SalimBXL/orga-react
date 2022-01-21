@@ -1,27 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-//import {  } from "../helpers";
 import BlogListEntry from "./BlogListEntry";
 import "./Blog.css";
 
 const BlogList = ({articles}) => {
 
-    if (articles.length < 1) return <p className="Blog-article">No article found.</p>;
+    if (articles.length < 1) return <p className="Blog-no-entry">No article found.</p>;
 
     return articles.map((article) => {
-        const bgColor = (!article.is_logbook)
-            ? "border-dark text-dark"
-            : article.is_approuved
-                ? "border-success text-success"
-                : "border-danger text-danger";
-        const style = (article.is_logbook && !article.is_approuved)
-            ? {"fontFamily": "'Roboto', sans-serif"}
-            : {};
-        const iconToDisplay = article.is_logbook
-            ? article.is_approuved
-                ? "bi bi-journal-check"
-                : "bi bi-exclamation-circle"
-            : "";
 
         return (
             <BlogListEntry
@@ -31,9 +17,6 @@ const BlogList = ({articles}) => {
                 body={article.body}
                 isLogBook={article.is_logbook}
                 isApprouved={article.is_approuved}
-                bgColor={bgColor}
-                style={style}
-                iconToDisplay={iconToDisplay}
                 dates={{
                     "created": article.date_created,
                     "modified": article.date_modified,

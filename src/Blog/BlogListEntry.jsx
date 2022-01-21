@@ -1,76 +1,63 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Blog.css";
 
 const ARTICLE_LIST_ITEM_LENGTH = 60;
 
-const BlogListEntry = ({id, title, body, isLogBook, isApprouved, bgColor, style, iconToDisplay, dates, approuvedBy}) => {
+const BlogListEntry = ({id, title, body, isLogBook, isApprouved, dates, approuvedBy}) => {
     
-    const _title = title;
-
-    const EntryModal = () => {
-        return (
-            <div className="modal" id="myModal">
-                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">
-                                {_title}
-                            </h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            {body}
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <>
+    const bgColor = (!isLogBook)
+        ? "border-dark text-dark"
+        : isApprouved
+            ? "border-success text-success"
+            : "border-danger text-danger";
+    const style = (isLogBook && !isApprouved)
+        ? {"fontFamily": "'Roboto', sans-serif"}
+        : {};
+    const iconToDisplay = isLogBook
+        ? isApprouved
+            ? "bi bi-journal-check"
+            : "bi bi-exclamation-circle"
+        : "";
         
-        <EntryModal />
-
+    return (
         <div key={id} className={`card ${bgColor} mb-3`} style={{style}}>
 
-            <div className="card-header Blog-entry-title" >
-                <h5 className="card-title"  >
-                    {title}
-                </h5>
+            <div className="card-header Blog-entry" >
+
+                <h5 className="card-title Blog-entry-title" >{title}</h5>
                 <div className="Blog-entry-title-buttons">
-                    {isLogBook && 
-                        <button type="button" disabled className={isApprouved ? "Blog-entry-title-button btn btn-sm btn-success" : "Blog-entry-title-button btn btn-sm btn-danger"}>
+                    {isLogBook && <button 
+                        type="button" disabled 
+                        className={isApprouved 
+                            ? "Blog-entry-title-button btn btn-sm btn-success" 
+                            : "Blog-entry-title-button btn btn-sm btn-danger"
+                        }>
                             <i className={iconToDisplay} />
                         </button>
                     }
                     <button type="button" 
-                        className="Blog-entry-title-button btn btn-sm btn-outline-secondary" 
-                        //data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        //</div>onClick={}
-                        >
+                            className="Blog-entry-title-button btn btn-sm btn-outline-secondary"
+                    >
                         <i className="bi bi-eye" />
                     </button>
                 </div>
             </div>
 
-            <div className="card-body">
-                <p className="card-text Blog-entry-text">
+            <div className="card-body Blog-entry-text">
+                <p className="card-text">
                     {body.length > ARTICLE_LIST_ITEM_LENGTH 
                         ? `${body.slice(0, ARTICLE_LIST_ITEM_LENGTH)}...`
                         : body
                     }
                 </p>
                 {isApprouved && 
-                    <p className="Blog-entry-misc text-success">
+                    <p className="Blog-entry-misc-logbook text-success">
                         Approuved: {dates.approuved} by {approuvedBy}
                     </p>
                 }
                 {(isLogBook && !isApprouved) &&
-                    <p className="Blog-entry-misc text-danger">
+                    <p className="Blog-entry-misc-logbook text-danger">
                         Not yet approuved
                     </p>
                 }
@@ -79,9 +66,35 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, bgColor, style,
                 </p>
             </div>
         </div>
-
-        </>
     )
 };
+
+BlogListEntry.propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.string, 
+    body: PropTypes.string,
+    isLogBook: PropTypes.bool,
+    isApprouved: PropTypes.bool,
+    dates: PropTypes.shape({
+        created: PropTypes.string,
+        modified: PropTypes.string,
+        approuved: PropTypes.string
+    }),
+    approuvedBy: PropTypes.number
+}
+
+BlogListEntry.defaultProps = {
+    id: null,
+    title: "",
+    body: "",
+    isLogBook: false,
+    isApprouved: false,
+    dates: {
+        created: "",
+        modified: "",
+        approuved: ""
+    },
+    approuvedBy: null
+}
 
 export default BlogListEntry;

@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
-//import {  } from "../helpers";
+import SpinWheel from "../helpers/SpinWheel";
 import axios from "axios";
 import BlogList from "./BlogList";
+import Pagination from "./Pagination";
 import "./Blog.css";
 
 import jsonData from "../data/blog.json";
 
 //const API_URL = "127.0.0.1";
-
-const SpinWheel = () => 
-    <div className="Blog-spin">
-        <div className="text-center">
-            <div className="spinner-border" role="status" /> <br />
-            <span>Loading...</span>
-        </div>
-    </div>
 
 
 const Blog = () => {
@@ -37,8 +30,14 @@ const Blog = () => {
 
     return (
         <div className="Blog">
-            <h1 className="Blog-title text-capitalize">Blog</h1>
-            {fetchingData ? <SpinWheel /> : <BlogList articles={blogData.articles} />}
+            <h1 className="text-capitalize">Blog</h1>
+            {fetchingData 
+                ? <SpinWheel />
+                : <div>
+                    <Pagination />
+                    <BlogList articles={blogData.articles} />
+                    <Pagination />
+                </div>}
         </div>
     );
 }

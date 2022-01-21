@@ -1,4 +1,3 @@
-import React from "react";
 
 /*
     Colors for jobs and absences related to code

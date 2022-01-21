@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import uuid from "react-uuid";
-import { absenceColor } from "../helpers";
+import { absenceColor } from "../helpers/helpers";
 import "./Dashboard.css";
 
 const MonthCalendar = ({weeks}) => {
