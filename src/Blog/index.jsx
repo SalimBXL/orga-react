@@ -3,6 +3,7 @@ import SpinWheel from "../helpers/SpinWheel";
 import axios from "axios";
 import BlogList from "./BlogList";
 import Pagination from "./Pagination";
+import ModalBox from "./ModalBox";
 import "./Blog.css";
 
 import jsonData from "../data/blog.json";
@@ -13,6 +14,7 @@ import jsonData from "../data/blog.json";
 const Blog = () => {
     const [fetchingData, setFetchingData] = useState(false);
     const [blogData, setBlogData] = useState([]);
+    const [currentModalEntry, setCurrentModalEntry] = useState({id: null, title: null, body:  null});
 
     async function getBlogData() {
         setFetchingData(true);
@@ -28,17 +30,25 @@ const Blog = () => {
         getBlogData();
     }, []);
 
+    const handleModalClick = (entry) => {
+        setCurrentModalEntry(prev => entry);
+    }
+
     return (
+        <>
+        <ModalBox entry={currentModalEntry} />
+
         <div className="Blog">
             <h1 className="text-capitalize">Blog</h1>
             {fetchingData 
                 ? <SpinWheel />
                 : <div>
                     <Pagination />
-                    <BlogList articles={blogData.articles} />
+                    <BlogList articles={blogData.articles} modalClick={handleModalClick} />
                     <Pagination />
                 </div>}
         </div>
+        </>
     );
 }
 

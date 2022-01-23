@@ -1,19 +1,28 @@
 import React from "react";
 import "./Blog.css";
 
-const ModalBox = () => (
-    <div className="modal-container">
-        <div className="overlay modal-trigger"></div>
-        <div className="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="dialogDesc">
-            <button 
-                aria-label="close modal"
-                className="close-modal modal-trigger">
-                X
-            </button>
-            <h1 id="modalTitle">Voici du Contenu</h1>
-            <p id="dialogDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nam exercitationem nihil veritatis sapiente quia.</p>
+const ModalBox = ({entry}) => {
+    const {id, title, body} = entry;
+    return (
+    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">
+                        #{id} - {title}
+                    </h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                    {body}
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
-    </div>
-);
+    </div>)
+};
 
 export default ModalBox;

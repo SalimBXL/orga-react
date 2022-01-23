@@ -3,26 +3,13 @@ import PropTypes from "prop-types";
 import BlogListEntry from "./BlogListEntry";
 import "./Blog.css";
 
-const BlogList = ({articles}) => {
+const BlogList = ({articles, modalClick}) => {
+
+    const handleModalClick = (entry) => {
+        modalClick(entry);
+    }
 
     if (articles.length < 1) return <p className="Blog-no-entry">No article found.</p>;
-
-    const articlesList = articles.map((article) => (
-        <BlogListEntry
-            key={article.id}
-            id={article.id}
-            title={article.title}
-            body={article.body}
-            isLogBook={article.is_logbook}
-            isApprouved={article.is_approuved}
-            dates={{
-                "created": article.date_created,
-                "modified": article.date_modified,
-                "approuved": article.date_approuved
-            }}
-            approuvedBy={article.approuved_by}
-        />)
-    );
 
     return articles.map((article) => (
             <BlogListEntry
@@ -38,6 +25,7 @@ const BlogList = ({articles}) => {
                     "approuved": article.date_approuved
                 }}
                 approuvedBy={article.approuved_by}
+                modalClick={handleModalClick}
             />)
     );
 };

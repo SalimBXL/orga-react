@@ -4,7 +4,9 @@ import "./Blog.css";
 
 const ARTICLE_LIST_ITEM_LENGTH = 60;
 
-const BlogListEntry = ({id, title, body, isLogBook, isApprouved, dates, approuvedBy}) => {
+const BlogListEntry = ({id, title, body, 
+                        isLogBook, isApprouved, dates, 
+                        approuvedBy, modalClick}) => {
     
     const bgColor = (!isLogBook)
         ? "border-dark text-dark"
@@ -19,8 +21,17 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, dates, approuve
             ? "bi bi-journal-check"
             : "bi bi-exclamation-circle"
         : "";
+    
+    const handleModalClick = () => {
+        modalClick({
+            id: id,
+            title: title,
+            body: body
+        });
+    }
         
     return (
+        <>
         <div key={id} className={`card ${bgColor} mb-3`} style={{style}}>
 
             <div className="card-header Blog-entry" >
@@ -36,9 +47,14 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, dates, approuve
                             <i className={iconToDisplay} />
                         </button>
                     }
-                    <button type="button" 
-                            className="modal-btn modal-trigger Blog-entry-title-button btn btn-sm btn-outline-secondary"
-                    >
+                    <button 
+                        onClick={handleModalClick}
+                        type="button" 
+                        className="Blog-entry-title-button 
+                                        btn btn-sm 
+                                        btn-outline-secondary" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal">
                         <i className="bi bi-eye" />
                     </button>
                 </div>
@@ -66,6 +82,7 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, dates, approuve
                 </p>
             </div>
         </div>
+        </>
     )
 };
 
