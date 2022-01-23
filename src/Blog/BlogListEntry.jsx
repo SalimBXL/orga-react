@@ -37,7 +37,7 @@ const BlogListEntry = ({id, title, body, isLogBook, isApprouved, dates, approuve
                         </button>
                     }
                     <button type="button" 
-                            className="Blog-entry-title-button btn btn-sm btn-outline-secondary"
+                            className="modal-btn modal-trigger Blog-entry-title-button btn btn-sm btn-outline-secondary"
                     >
                         <i className="bi bi-eye" />
                     </button>

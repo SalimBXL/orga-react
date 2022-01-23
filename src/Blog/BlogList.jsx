@@ -7,9 +7,24 @@ const BlogList = ({articles}) => {
 
     if (articles.length < 1) return <p className="Blog-no-entry">No article found.</p>;
 
-    return articles.map((article) => {
+    const articlesList = articles.map((article) => (
+        <BlogListEntry
+            key={article.id}
+            id={article.id}
+            title={article.title}
+            body={article.body}
+            isLogBook={article.is_logbook}
+            isApprouved={article.is_approuved}
+            dates={{
+                "created": article.date_created,
+                "modified": article.date_modified,
+                "approuved": article.date_approuved
+            }}
+            approuvedBy={article.approuved_by}
+        />)
+    );
 
-        return (
+    return articles.map((article) => (
             <BlogListEntry
                 key={article.id}
                 id={article.id}
@@ -23,9 +38,8 @@ const BlogList = ({articles}) => {
                     "approuved": article.date_approuved
                 }}
                 approuvedBy={article.approuved_by}
-            />
-        );
-    });
+            />)
+    );
 };
 
 BlogList.propTypes = {
