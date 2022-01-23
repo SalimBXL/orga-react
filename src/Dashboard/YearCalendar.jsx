@@ -9,8 +9,10 @@ const YearCalendar = ({calendarData, handleClick}) => {
         handleClick(monthIndex);
     }
 
-    const printMonth = (monthIndex, weeks) => (
-        <div onClick={() => handleClickOnCalendar(monthIndex)}>
+    const printMonth = (monthIndex, weeks, style) => {
+        
+        return (
+        <div onClick={() => handleClickOnCalendar(monthIndex)} style={style}>
             <span className="text-capitalize">{MONTHNAME[monthIndex]}</span>
             <table>
                 <tbody key={MONTHNAME[monthIndex]}>
@@ -37,17 +39,27 @@ const YearCalendar = ({calendarData, handleClick}) => {
                 </tbody>
             </table>
         </div>
-    );
+    )};
 
-    
     return (
         <div className="Dashboard-yearCalendar d-none d-md-block">
             <div className="hstack">
-                {calendarData.months.map((month, idx) => (
-                    <div key={idx} className="col">
-                        {printMonth(month.month_index, month.weeks)}
-                    </div>)
-                )}
+                {calendarData.months.map((month, idx) => {
+                    let m = ((new Date()).getMonth() + 1);
+                    let y = ((new Date()).getFullYear());
+                    m = Number((m < 10) ? ("0" + m) : m);
+                    const style = (month.month_index === m && month.year === y) 
+                        ? {
+                            "backgroundColor": "lightyellow",
+                            "borderRadius": "10px"
+                        }
+                        : null;
+                    return (
+                        <div key={idx} className="col">
+                            {printMonth(month.month_index, month.weeks, style)}
+                        </div>
+                    );
+                })}
             </div>
         </div>
     )

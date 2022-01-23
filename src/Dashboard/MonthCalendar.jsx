@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import uuid from "react-uuid";
-import { absenceColor } from "../helpers/helpers";
+import { absenceColor, getDateYMDFormated, getMonday } from "../helpers/helpers";
 import "./Dashboard.css";
 
 const MonthCalendar = ({weeks}) => {
     
     const weekLine = ({date, jobs, absences, tasks}) => {
         const key = date ? date : uuid();
+        const bg = (date === getMonday(new Date())) ? "table-warning" : null;
+        const style = { height: "48px" };
         return (
-        <tr key={key} style={{height: "48px"}}>
+        <tr key={key} style={style} className={bg}>
             {weekLineDescription(date, tasks)}
             {weekLineDays(jobs, absences)}
         </tr>

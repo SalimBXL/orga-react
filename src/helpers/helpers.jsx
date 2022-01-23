@@ -15,9 +15,28 @@ export const absenceColor = (absence) => {
 /*
     Date and Time helpers
 */
-export const getDateYMDFormated = (date = new Date()) => `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+export const getDateYMDFormated = (date = new Date()) => {
+    const y = date.getFullYear();
+    const m = (date.getMonth()+1) < 10 ? "0"+(date.getMonth()+1) : (date.getMonth()+1);
+    const d = date.getDate() < 10 ? "0"+date.getDate() : date.getDate();
+    return `${y}-${m}-${d}`;
+};
 
-export const getDateAndTimeFormated = (date = new Date()) => `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours}:${date.getMinutes}:${date.getSeconds}`;
+export const getDateAndTimeFormated = (date = new Date()) => {
+    const dt = getDateYMDFormated(date);
+    const h = date.getHours() < 10 ? "0"+date.getHours() : date.getHours();
+    const m = date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes();
+    const s = date.getSeconds() < 10 ? "0"+date.getSeconds() : date.getSeconds(); 
+    return `${dt} ${h}:${m}:${s}`;
+};
+
+export const getMonday = (date = new Date()) => {
+    const y = date.getFullYear();
+    const m = (date.getMonth()+1) < 10 ? "0"+(date.getMonth()+1) : (date.getMonth()+1);
+    let d = date.getDate() - date.getDay() + 1;
+    d = d < 10 ? "0"+d : d;
+    return `${y}-${m}-${d}`;
+}
 
 export const MONTHNAME = {
     1: "january", 2: "february", 3: "march", 4: "april", 5: "may", 6: "june", 

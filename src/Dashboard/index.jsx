@@ -29,18 +29,15 @@ const Dashboard = () => {
 
     async function getCalendarData() {
         setFetchingCalendarData(true);
-        
         //const data = await axios.get(API_URL);
         const data = jsonData;
-        
         setCalendarData((prev) => {
             setFetchingCalendarData(false);
             return data;
         });
-       
     }
 
-    useEffect(() => {    
+    useEffect(() => {
         getCalendarData();
     }, []);
 
