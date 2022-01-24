@@ -1,0 +1,19 @@
+.Home {
+    
+    height: 600px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    background-color: coral;
+    padding: 5px;
+}
+
+.Home-main {
+    background-color: cadetblue;
+}
+
+.Home-postits {
+    background-color: aqua;
+}
