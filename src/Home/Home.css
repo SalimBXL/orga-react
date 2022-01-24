@@ -1,19 +1,61 @@
-.Home {
-    
-    height: 600px;
-    
+
+.Home { 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-content: space-between;
-    background-color: coral;
-    padding: 5px;
+    justify-content: center;
+    align-items: center;
 }
 
 .Home-main {
-    background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.Home-messages, .Home-jobs {
+    min-width: 300px;
+    max-width: 45%;
+    margin: auto;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+
+.Home-messages {
+    background-color: white;
+}
+
+.Home-jobs {
+    background-color: white;
+}
+
+.Home-messages-title, .Home.jobs.title {
+
+}
+
+.Home-messages-body, .Home.jobs.body {
+
 }
 
 .Home-postits {
-    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 350;
+    max-width: 95%;
+}
+
+.Home-footer {
+    font-family: 'Source Code Pro', monospace;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 1em;
+    width: 100%;
+    border-top: 1px solid lightgray;
+    font-size: smaller;
+    color: lightslategrey;
 }

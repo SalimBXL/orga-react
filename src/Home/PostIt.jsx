@@ -12,10 +12,12 @@ const PostIt = ({title, body, level}) => {
                 ? "bg-light"                // Normal
                 : "bg-secondary";   // Done
 
-    return (
-        <div className="card shadow PostIt">
+    
 
-            <h6 className="fw-bolder p-2">
+    return (
+        <div className="card shadow PostIt" onClick={() => { alert("TODO");}}>
+
+            <h6 className="fw-bolder PostIt-header">
                 {title}
                 <span
                     className={`position-absolute top-0 start-100 translate-middle p-2 ${bg} 
@@ -24,11 +26,11 @@ const PostIt = ({title, body, level}) => {
                 </span>
             </h6>
 
-            <p className="font-monospace p-2 PostIt-body" >
-                {body.slice(0, 35)}
+            <p className="font-monospace PostIt-body" >
+                {body}
             </p>
 
-            <p className="text-secondary text-end fs-6 p-2 PostIt-footer" >Blabla</p>
+            <p className="text-secondary text-end PostIt-footer" >Blabla</p>
         </div>
     );
 }
