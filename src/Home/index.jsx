@@ -6,8 +6,7 @@ const Home = () => {
 
     return (
     <div className="Home">
-        <h1>Home</h1>
-
+        
         <div className="Home-main">
 
             <div className="card shadow Home-messages">
@@ -33,6 +32,27 @@ const Home = () => {
             </div>
         </div>
 
+        <div className="Home-shortcuts">
+
+            <div className="btn-group shadow" role="group" aria-label="Basic outlined example">
+
+                <button type="button" className="btn btn-group-lg btn-outline-secondary"
+                    data-bs-toggle="tooltip" title="Today">
+                    <i className="bi bi-calendar-day fs-1"/>
+                </button>
+
+                <button type="button" className="btn btn-group-lg btn-outline-secondary"
+                    data-bs-toggle="tooltip" title="This Week">
+                    <i className="bi bi-calendar-week fs-1" />
+                </button>
+
+                <button type="button" className="btn btn-group-lg btn-outline-secondary"
+                    data-bs-toggle="tooltip" title="This Month">
+                <i className="bi bi-calendar-month fs-1" />
+                </button>
+            </div>
+        </div>
+
         <div className="Home-postits">
             <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla. Reblablabal. Etc etc."} level={4}/>
             <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={3}/>
@@ -44,9 +64,7 @@ const Home = () => {
             <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={1}/>
         </div>
 
-        <footer className="Home-footer">
-            <small>(c) 2022 Salim A. JOLY - PET Scan ULB Erasme</small>
-        </footer>
+        
 
     </div>);
 }

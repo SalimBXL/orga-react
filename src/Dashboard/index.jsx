@@ -56,9 +56,11 @@ const Dashboard = () => {
 
     return (<div className="Dashboard vstack">
         
-        <h1 className="Dashboard-title text-capitalize">Dashboard - {dashboardDate.getFullYear()}</h1>
+        <h1 className="Dashboard-title text-capitalize text-secondary">
+            <i className="bi bi-calendar3" /> Dashboard
+        </h1>
 
-        <h2 className="Dashboard-userName text-uppercase">Salim Joly</h2>
+        <h2 className="Dashboard-userName text-uppercase text-secondary">Salim Joly</h2>
 
         {fetchingCalendarData 
             ? <SpinWheel />

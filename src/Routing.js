@@ -12,7 +12,7 @@ const Routing = () => {
             <Route path="/dashboard/:user_id" element={<Dashboard />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/page=:page" element={<Blog />} />
-      </Routes>
+        </Routes>
     );
 }
 

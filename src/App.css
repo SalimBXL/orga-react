@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+.footer {
+  font-family: 'Source Code Pro', monospace;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1em;
+  width: 100%;
+  border-top: 1px solid lightgray;
+  font-size: smaller;
+  color: lightslategrey;
+}
