@@ -1,4 +1,5 @@
 import React from "react";
+import ShortcutsBar from "./ShortcutsBar";
 import PostIt from "./PostIt";
 import "./Home.css";
 
@@ -34,23 +35,60 @@ const Home = () => {
 
         <div className="Home-shortcuts">
 
-            <div className="btn-group shadow" role="group" aria-label="Basic outlined example">
+            <ShortcutsBar typeColor="primary" actions={
+                [{
+                    icon: "bi bi-calendar-day",
+                    link: "#",
+                    label: "Today"
+                },
+                {
+                    icon: "bi bi-calendar-week",
+                    link: "#",
+                    label: "This Week"
+                },
+                {
+                    icon: "bi bi-calendar3",
+                    link: "#",
+                    label: "This Month"
+                }]}
+            />
 
-                <button type="button" className="btn btn-group-lg btn-outline-secondary"
-                    data-bs-toggle="tooltip" title="Today">
-                    <i className="bi bi-calendar-day fs-1"/>
-                </button>
+            <ShortcutsBar typeColor="success" actions={
+                [{
+                    icon: "bi bi-bandaid",
+                    link: "#",
+                    label: "Absences"
+                },
+                {
+                    icon: "bi bi-calendar-check",
+                    link: "#",
+                    label: "Events"
+                },
+                {
+                    icon: "bi bi-calendar-x",
+                    link: "#",
+                    label: "Days Off"
+                },
+                {
+                    icon: "bi bi-grid-3x3",
+                    link: "#",
+                    label: "Grid"
+                }]}
+            />
 
-                <button type="button" className="btn btn-group-lg btn-outline-secondary"
-                    data-bs-toggle="tooltip" title="This Week">
-                    <i className="bi bi-calendar-week fs-1" />
-                </button>
+            <ShortcutsBar typeColor="dark" actions={
+                [{
+                    icon: "bi bi-grid-3x2-gap",
+                    link: "#",
+                    label: "Dashboard"
+                },
+                {
+                    icon: "bi bi-journals",
+                    link: "#",
+                    label: "Blog"
+                }]}
+            />
 
-                <button type="button" className="btn btn-group-lg btn-outline-secondary"
-                    data-bs-toggle="tooltip" title="This Month">
-                <i className="bi bi-calendar-month fs-1" />
-                </button>
-            </div>
         </div>
 
         <div className="Home-postits">

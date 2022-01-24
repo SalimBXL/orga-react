@@ -57,7 +57,7 @@ const Dashboard = () => {
     return (<div className="Dashboard vstack">
         
         <h1 className="Dashboard-title text-capitalize text-secondary">
-            <i className="bi bi-calendar3" /> Dashboard
+            <i className="bi bi-grid-3x2-gap" /> Dashboard
         </h1>
 
         <h2 className="Dashboard-userName text-uppercase text-secondary">Salim Joly</h2>
