@@ -1,4 +1,6 @@
 import React from "react";
+import uuid from "react-uuid";
+import MessageBox from "./MessageBox";
 import ShortcutsBar from "./ShortcutsBar";
 import PostIt from "./PostIt";
 import "./Home.css";
@@ -7,35 +9,28 @@ const Home = () => {
 
     return (
     <div className="Home">
+
+        
         
         <div className="Home-main">
 
-            <div className="card shadow Home-messages">
-                <h4>Messages</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            <MessageBox title="Messages" 
+                        message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
                 nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum.</p>
-            </div>
+                deserunt mollit anim id est laborum." />
 
-            <div className="card shadow Home-jobs">
-                <h4>Jobs of the day</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum.</p>
-            </div>
+            <MessageBox title="Messages" 
+                        message="test" />
+
         </div>
 
         <div className="Home-shortcuts">
 
-            <ShortcutsBar typeColor="primary" actions={
+            <ShortcutsBar key={uuid()} typeColor="primary" actions={
                 [{
                     icon: "bi bi-calendar-day",
                     link: "#",
@@ -53,7 +48,7 @@ const Home = () => {
                 }]}
             />
 
-            <ShortcutsBar typeColor="success" actions={
+            <ShortcutsBar key={uuid()} typeColor="success" actions={
                 [{
                     icon: "bi bi-bandaid",
                     link: "#",
@@ -76,7 +71,7 @@ const Home = () => {
                 }]}
             />
 
-            <ShortcutsBar typeColor="dark" actions={
+            <ShortcutsBar key={uuid()} typeColor="dark" actions={
                 [{
                     icon: "bi bi-grid-3x2-gap",
                     link: "#",

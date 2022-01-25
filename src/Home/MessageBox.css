@@ -1,0 +1,19 @@
+.MessageBox {
+    max-width: 45%;
+    min-width: 350px;
+    min-height: 200px;
+    max-height: 200px;
+    margin-bottom: 0.5rem;
+    padding: 0.5em;
+}
+
+.MessageBox-title {
+
+}
+
+.MessageBox-message {
+    text-align: left;
+    padding: 0.5em;
+    word-break: break-word;
+    overflow: auto;
+}

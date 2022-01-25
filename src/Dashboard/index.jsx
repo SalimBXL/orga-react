@@ -56,7 +56,7 @@ const Dashboard = () => {
 
     return (<div className="Dashboard vstack">
         
-        <h1 className="Dashboard-title text-capitalize text-secondary">
+        <h1 className="Dashboard-title text-capitalize text-dark">
             <i className="bi bi-grid-3x2-gap" /> Dashboard
         </h1>
 

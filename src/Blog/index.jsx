@@ -39,7 +39,9 @@ const Blog = () => {
         <ModalBox entry={currentModalEntry} />
 
         <div className="Blog">
-            <h1 className="text-capitalize text-secondary"><i class="bi bi-journals"></i> Blog</h1>
+            <h1 className="text-capitalize text-dark">
+                <i class="bi bi-journals"></i> Blog
+            </h1>
             {fetchingData 
                 ? <SpinWheel />
                 : <div>

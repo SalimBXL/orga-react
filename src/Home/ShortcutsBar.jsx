@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 const ShortcutsBar = ({typeColor, actions}) => {
     return (
         <div className="btn-group shadow" role="group" style={{margin: "1em"}}>
-            {actions.map((item) => {
+            {actions.map((item, idx) => {
                 const {icon, link, label} = item;
                 const _icon = icon + " fs-1";
+                const key="btn-"+label+"-"+idx;
                 return (
-                    <button type="button" className={`btn btn-group-lg btn-outline-${typeColor}`}
+                    <button key={key} type="button" className={`btn btn-group-lg btn-outline-${typeColor}`}
                         data-bs-toggle="tooltip" title={label}>
                         <i className={_icon} />
                     </button>
