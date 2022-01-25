@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ShortcutsBar = ({typeColor, actions}) => {
     return (
-        <div className="btn-group shadow" role="group" style={{margin: "1em"}}>
+        <div className="btn-group" role="group" style={{margin: "1em"}}>
             {actions.map((item, idx) => {
                 const {icon, link, label} = item;
                 const _icon = icon + " fs-1";

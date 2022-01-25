@@ -1,6 +1,6 @@
 .PostIt {
-    width: 155px;
-    height: 150px; 
+    max-width: 150px;
+    max-height: 150px; 
     background-color: lightyellow;
     margin: 0.5rem;
     display: flex;

@@ -10,25 +10,18 @@ const Home = () => {
     return (
     <div className="Home">
 
-        
-        
         <div className="Home-main">
 
             <MessageBox title="Messages" 
-                        message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum." />
+                        message="Lorem ipsum " />
 
             <MessageBox title="Messages" 
                         message="test" />
 
         </div>
 
-        <div className="Home-shortcuts">
+
+        <div className="Home-shortcuts shadow-sm">
 
             <ShortcutsBar key={uuid()} typeColor="primary" actions={
                 [{
@@ -86,15 +79,23 @@ const Home = () => {
 
         </div>
 
-        <div className="Home-postits">
-            <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla. Reblablabal. Etc etc."} level={4}/>
-            <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={3}/>
-            <PostIt className="" title={"Mon Titre"} body={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."} level={0}/>
-            <PostIt className="" title={"Mon Titre"} body={"A123456789B123456789C123456789D123456789"} level={0}/>
-            <PostIt className="" title={"Mon Titre"} body={"A123456789B123456789C123456789D123456789"} level={0}/>
-            <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={2}/>
-            <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={1}/>
-            <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={1}/>
+
+        <div >
+            {/* A faire */}
+            <div className="Home-postits">
+                <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla. Reblablabal. Etc etc."} level={4}/>
+                <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={3}/>
+                <PostIt className="" title={"Mon Titre"} body={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."} level={0}/>
+                <PostIt className="" title={"Mon Titre"} body={"A123456789B123456789C123456789D123456789"} level={0}/>
+                <PostIt className="" title={"Mon Titre"} body={"A123456789B123456789C123456789D123456789"} level={0}/>
+            </div>
+
+            {/* En cours ou terminés */}
+            <div className="Home-postits">
+                <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={2}/>
+                <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={1}/>
+                <PostIt className="" title={"Mon Titre"} body={"Mon texte. Blablabla."} level={1}/>
+            </div>
         </div>
 
         

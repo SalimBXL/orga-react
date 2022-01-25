@@ -23,7 +23,7 @@ const NavBar = ({items}) => (
 
 const Navbar = () => {
     const menu = () => (
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0 shadow-lg">
             <li key="home" className="nav-item">
                 <NavLink to={"/"} className="nav-link text-capitalize" end>
                     Home
