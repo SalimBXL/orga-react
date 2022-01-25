@@ -3,80 +3,57 @@ import uuid from "react-uuid";
 import MessageBox from "./MessageBox";
 import ShortcutsBar from "./ShortcutsBar";
 import PostIt from "./PostIt";
+import { getDateLongStyleFormated, getDateYMDFormated } from "../helpers/helpers";
 import "./Home.css";
 
 const Home = () => {
 
+    const SHORTCUTS = [
+        {
+            typeColor: "primary", 
+            actions: [
+                {icon: "bi bi-calendar-day", link: "#", label: "Today"},
+                {icon: "bi bi-calendar-week", link: "#", label: "This Week"},
+                {icon: "bi bi-calendar3", link: "#", label: "This Month"}
+            ]
+        },
+        {
+            typeColor: "success", 
+            actions: [
+                {icon: "bi bi-bandaid", link: "#", label: "Absences"},
+                {icon: "bi bi-calendar-check", link: "#", label: "Events"},
+                {icon: "bi bi-calendar-x", link: "#", label: "Days Off" },
+                {icon: "bi bi-grid-3x3", link: "#", label: "Grid"}
+            ]
+        },
+        {
+            typeColor: "dark", 
+            actions: [
+                {icon: "bi bi-grid-3x2-gap", link: "/dashboard/7", label: "Dashboard"},
+                {icon: "bi bi-journals", link: "/blog", label: "Blog"}
+            ]
+        }
+    ];
+
     return (
     <div className="Home">
 
-        <div className="Home-main">
-
-            <MessageBox title="Messages" 
-                        message="Lorem ipsum " />
-
-            <MessageBox title="Messages" 
-                        message="test" />
-
+        <div className="card shadow-sm" style={{width: "100%", textAlign: "left", borderRadius: "10px"}}>
+            <h6 className="card-header">{getDateLongStyleFormated()}</h6>
+            <div className="card-body Home-main">
+                <MessageBox title="Messages" message="Lorem ipsum " />
+                <MessageBox title="Messages" message="test" />
+            </div>
         </div>
 
-
-        <div className="Home-shortcuts shadow-sm">
-
-            <ShortcutsBar key={uuid()} typeColor="primary" actions={
-                [{
-                    icon: "bi bi-calendar-day",
-                    link: "#",
-                    label: "Today"
-                },
-                {
-                    icon: "bi bi-calendar-week",
-                    link: "#",
-                    label: "This Week"
-                },
-                {
-                    icon: "bi bi-calendar3",
-                    link: "#",
-                    label: "This Month"
-                }]}
-            />
-
-            <ShortcutsBar key={uuid()} typeColor="success" actions={
-                [{
-                    icon: "bi bi-bandaid",
-                    link: "#",
-                    label: "Absences"
-                },
-                {
-                    icon: "bi bi-calendar-check",
-                    link: "#",
-                    label: "Events"
-                },
-                {
-                    icon: "bi bi-calendar-x",
-                    link: "#",
-                    label: "Days Off"
-                },
-                {
-                    icon: "bi bi-grid-3x3",
-                    link: "#",
-                    label: "Grid"
-                }]}
-            />
-
-            <ShortcutsBar key={uuid()} typeColor="dark" actions={
-                [{
-                    icon: "bi bi-grid-3x2-gap",
-                    link: "#",
-                    label: "Dashboard"
-                },
-                {
-                    icon: "bi bi-journals",
-                    link: "#",
-                    label: "Blog"
-                }]}
-            />
-
+        <div className="card shadow-sm Home-shortcuts" >
+            {SHORTCUTS.map(bar => (
+                <ShortcutsBar 
+                    key={uuid()} 
+                    typeColor={bar.typeColor} 
+                    actions={bar.actions}
+                />
+            ))}
         </div>
 
 

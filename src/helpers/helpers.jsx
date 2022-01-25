@@ -15,6 +15,13 @@ export const absenceColor = (absence) => {
 /*
     Date and Time helpers
 */
+
+export const getDateLongStyleFormated = (date = new Date()) => {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    //return date.toLocaleDateString("en-US", options);
+    return date.toLocaleDateString("en-US", options);
+}
+
 export const getDateYMDFormated = (date = new Date()) => {
     const y = date.getFullYear();
     const m = (date.getMonth()+1) < 10 ? "0"+(date.getMonth()+1) : (date.getMonth()+1);
