@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import uuid from "react-uuid";
 
 const ShortcutsBar = ({typeColor, actions}) => {
     return (
@@ -10,11 +11,11 @@ const ShortcutsBar = ({typeColor, actions}) => {
                 const _icon = icon + " fs-1";
                 const key="btn-"+label+"-"+idx;
                 return (
-                    <Link to={link} >
-                    <button key={key} type="button" className={`btn btn-group-lg btn-outline-${typeColor}`}
-                        data-bs-toggle="tooltip" title={label}>
-                        <i className={_icon} />
-                    </button>
+                    <Link key={uuid()} to={link} >
+                        <button key={key} type="button" className={`btn btn-group-lg btn-outline-${typeColor}`}
+                            data-bs-toggle="tooltip" title={label}>
+                            <i className={_icon} />
+                        </button>
                     </Link>
                 )
             })}
