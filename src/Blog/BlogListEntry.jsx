@@ -88,8 +88,8 @@ const BlogListEntry = ({id, title, body,
 
 BlogListEntry.propTypes = {
     id: PropTypes.number,
-    title: PropTypes.string, 
-    body: PropTypes.string,
+    title: PropTypes.string.isRequired, 
+    body: PropTypes.string.isRequired,
     isLogBook: PropTypes.bool,
     isApprouved: PropTypes.bool,
     dates: PropTypes.shape({

@@ -41,7 +41,8 @@ BlogList.propTypes = {
         is_logbook: PropTypes.bool,
         title: PropTypes.string,
         body: PropTypes.string
-    }))
+    })).isRequired,
+    modalClick: PropTypes.func.isRequired
 }
 
 BlogList.defaultProps = {

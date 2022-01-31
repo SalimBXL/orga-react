@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./MessageBox.css";
 
 const MessageBox = ({title, message}) => {
@@ -9,6 +10,16 @@ const MessageBox = ({title, message}) => {
             <div className="MessageBox-message">{message}</div>
         </div>
     );
+}
+
+MessageBox.propTypes = {
+    title: PropTypes.string,
+    message: PropTypes.string
+}
+
+MessageBox.defaultProps = {
+    title: "NO TITLE",
+    message: "NO MESSAGE"
 }
 
 export default MessageBox;

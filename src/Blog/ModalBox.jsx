@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Blog.css";
 
 const ModalBox = ({entry}) => {
@@ -24,5 +25,21 @@ const ModalBox = ({entry}) => {
         </div>
     </div>)
 };
+
+ModalBox.propTypes = {
+    entry: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        body: PropTypes.string
+    }).isRequired
+}
+
+ModalBox.defaultProps = {
+    entry: {
+        id: null,
+        title: "no title",
+        body: "no body"
+    }
+}
 
 export default ModalBox;

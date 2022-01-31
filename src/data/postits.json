@@ -1,0 +1,69 @@
+{
+    "postits": [
+    {
+        "id": 0,
+        "title": "Un titre", 
+        "body": "Un contenu de postit.", 
+        "level": 0,
+        "private": true, 
+        "user": {
+            "id": 0,
+            "fullname": "Salim JOLY"
+        }
+    },
+    {
+        "id": 5,
+        "title": "Un titre", 
+        "body": "Un contenu de postit.", 
+        "level": 0,
+        "private": false, 
+        "user": {
+            "id": 0,
+            "fullname": "Salim JOLY"
+        }
+    },
+    {
+        "id": 1,
+        "title": "Un autre titre", 
+        "body": "Un autre contenu de postit...", 
+        "level": 2, 
+        "private": false,
+        "user": {
+            "id": 0,
+            "fullname": "Salim JOLY"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Un autre titre", 
+        "body": "Un autre contenu de postit...", 
+        "level": 1, 
+        "private": false,
+        "user": {
+            "id": 0,
+            "fullname": "Salim JOLY"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Un autre titre", 
+        "body": "Un autre contenu de postit...", 
+        "level": 3, 
+        "private": false,
+        "user": {
+            "id": 0,
+            "fullname": "Salim JOLY"
+        }
+    },
+    {
+        "id": 4,
+        "title": "Un autre titre", 
+        "body": "Un autre contenu de postit...", 
+        "level": 4, 
+        "private": false,
+        "user": {
+            "id": 0,
+            "fullname": "Salim JOLY"
+        }
+    }
+]}
