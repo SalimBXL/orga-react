@@ -50,7 +50,7 @@ const PostIt = ({title, body, level, isPrivate, author}) => {
 PostIt.propTypes = {
     title: PropTypes.string, 
     body: PropTypes.string, 
-    level: PropTypes.oneOf(0, 1, 2, 3, 4),
+    level: PropTypes.oneOf([0, 1, 2, 3, 4]),
     isPrivate: PropTypes.bool, 
     author: PropTypes.string
 }
@@ -59,7 +59,7 @@ PostIt.defaultProps = {
     title: "[No TITLE]", 
     body: "[NO TEXT]", 
     level: 0, 
-    isPrivate: true, 
+    isPrivate: false, 
     author: "YOU!"
 }
 
