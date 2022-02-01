@@ -1,3 +1,12 @@
+/*
+    Some constants
+*/
+
+export const API_CONSTANT = {
+    //BASE_URL: "http://164.15.145.247:3000",
+    BASE_URL: "http://127.0.0.1:3001",
+    TIMEOUT: 5000
+}
 
 /*
     Colors for jobs and absences related to code
