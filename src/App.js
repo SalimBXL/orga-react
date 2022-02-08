@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { API_CONSTANT } from "./helpers/helpers";
 import SpinWheel from "./helpers/SpinWheel";
+import TimeOutExceededWarning from "./helpers/TimeOutExceededWarning";
 import Routing from "./Routing";
 import Navbar from "./Navbar";
 import './App.css';
@@ -9,6 +10,7 @@ import './App.css';
 function App() {
   const [fetchingData, setFetchingData] = useState(false);
   const [serverIsAlive, setServerIsAlive] = useState(false);
+  const [errors, setErrors] = useState();
 
   async function getData() {    
     setFetchingData(true);
@@ -23,6 +25,7 @@ function App() {
     } catch (err) {
       setServerIsAlive(false);
       setFetchingData(false);
+      setErrors(err.message);
       return err;
     }
     setServerIsAlive(true);
@@ -33,17 +36,15 @@ function App() {
       getData();
   }, []);
 
+
+  
+
+
   return (
     fetchingData 
       ? <SpinWheel what="/ Contacting server" />
       : !serverIsAlive
-        ? <div >
-            <h1>Timeout exceeded!</h1>
-            <h3>Impossible to contact API server</h3>
-            <p>
-            API Server did not respond after {API_CONSTANT.TIMEOUT/1000} seconds.
-            </p>
-          </div>
+        ? <TimeOutExceededWarning errors={errors}/>
         : <div className="App">
             <Navbar />
             <div className='container'>

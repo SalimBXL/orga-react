@@ -3,8 +3,8 @@
 */
 
 export const API_CONSTANT = {
-    //BASE_URL: "http://164.15.145.247:3000",
-    BASE_URL: "http://127.0.0.1:3001",
+    //BASE_URL: "http://127.0.0.1:3001",
+    BASE_URL: "http://164.15.145.247:3001/v1",
     TIMEOUT: 5000
 }
 

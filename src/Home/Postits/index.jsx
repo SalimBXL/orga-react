@@ -13,8 +13,7 @@ const Postits = () => {
     async function getPostitsData() {    
         setFetchingPostitsData(true);
         let data = {};
-        //const api_url = API_CONSTANT.BASE_URL + "/v1/postits";
-        const api_url = "http://127.0.0.1:300/v1/postits";
+        const api_url = API_CONSTANT.BASE_URL + "/postits";
         try {
             data = await axios({
                 method: 'get',
@@ -49,7 +48,7 @@ const Postits = () => {
                         title={postit.title} 
                         body={postit.body}
                         level={postit.level}
-                        isPrivate={postit.private}
+                        isPrivate={postit.is_private}
                         author={postit.user.fullname}
                     />
                 )

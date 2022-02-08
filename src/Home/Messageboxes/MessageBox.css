@@ -11,7 +11,7 @@
 }
 
 .MessageBox-message {
-    min-height: 300px;
+    min-height: 150px;
     text-align: left;
     padding: 0.5em;
     word-break: break-word;
