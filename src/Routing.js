@@ -1,8 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import Dashboard from "./Dashboard";
-import Blog from "./Blog";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Blog from "./pages/Blog";
+import Postits from "./pages/Postits";
 
 const Routing = () => {
 
@@ -12,6 +13,7 @@ const Routing = () => {
             <Route path="/dashboard/:user_id" element={<Dashboard />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/page=:page" element={<Blog />} />
+            <Route path="/postits" element={<Postits />} />
         </Routes>
     );
 }

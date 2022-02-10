@@ -26,7 +26,8 @@ const Shortcuts = () => {
             typeColor: "dark", 
             actions: [
                 {icon: "bi bi-grid-3x2-gap", link: "/dashboard/7", label: "Dashboard"},
-                {icon: "bi bi-journals", link: "/blog", label: "Blog"}
+                {icon: "bi bi-journals", link: "/blog", label: "Blog"},
+                {icon: "bi bi-sticky", link: "/postits", label: "Post-Its"}
             ]
         }
     ];

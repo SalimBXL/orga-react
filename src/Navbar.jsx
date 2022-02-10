@@ -4,7 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 const APP_TITLE = "orga";
 const LINKS = {
     dashboard: "/dashboard/7",
-    blog: "/blog"
+    blog: "/blog",
+    postits: "/postits"
 };
 
 const NavBar = ({items}) => (

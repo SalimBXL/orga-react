@@ -1,7 +1,7 @@
 import React from "react";
-import Messageboxes from "./Messageboxes";
-import Shortcuts from "./Shortcuts";
-import Postits from "./Postits";
+import Messageboxes from "../../components/Messageboxes";
+import Shortcuts from "../../components/Shortcuts";
+import Postits from "../../components/Postits";
 import "./Home.css";
 
 const Home = () => {

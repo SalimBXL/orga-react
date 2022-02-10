@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import SpinWheel from "../helpers/SpinWheel";
+import SpinWheel from "../../helpers/SpinWheel";
 import axios from "axios";
 import BlogList from "./BlogList";
 import Pagination from "./Pagination";
 import ModalBox from "./ModalBox";
 import "./Blog.css";
 
-import jsonData from "../data/blog.json";
+import jsonData from "../../data/blog.json";
 
 //const API_URL = "127.0.0.1";
 

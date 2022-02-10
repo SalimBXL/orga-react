@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {useParams } from "react-router-dom";
-import SpinWheel from "../helpers/SpinWheel";
-import { MONTHNAME } from "../helpers/helpers";
+import SpinWheel from "../../helpers/SpinWheel";
+import { MONTHNAME } from "../../helpers/helpers";
 import axios from "axios";
 import YearCalendar from "./YearCalendar";
 import MonthCalendar from "./MonthCalendar";
 import "./Dashboard.css";
 
-import jsonData from "../data/calendar.json";
+import jsonData from "../../data/calendar.json";
 
 const API_URL = "127.0.0.1";
 
