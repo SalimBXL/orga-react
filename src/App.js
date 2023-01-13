@@ -25,7 +25,8 @@ function App() {
     } catch (err) {
       setServerIsAlive(false);
       setFetchingData(false);
-      setErrors(err.message);
+      const errorMessage = `${err.message} : ${err.response.statusText}. You may be not logged in.`;
+      setErrors(errorMessage);
       return err;
     }
     setServerIsAlive(true);
@@ -35,10 +36,6 @@ function App() {
   useEffect(() => {
       getData();
   }, []);
-
-
-  
-
 
   return (
     fetchingData 

@@ -13,7 +13,7 @@ const YearCalendar = ({calendarData, handleClick}) => {
         
         return (
         <div onClick={() => handleClickOnCalendar(monthIndex)} style={style}>
-            <span className="text-capitalize">{MONTHNAME[monthIndex]}</span>
+            <span className="text-capitalize">{MONTHNAME[monthIndex].substr(0,3)}</span>
             <table>
                 <tbody key={MONTHNAME[monthIndex]}>
                     {weeks.map(({date, jobs, absences}, idx) => {

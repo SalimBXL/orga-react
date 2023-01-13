@@ -18,15 +18,14 @@
 }
 
 .Dashboard-yearCalendar {
-    font-family: 'Roboto', sans-serif;
     border: none;
-    padding: 1em 0 0 0;
-    margin: 1em 0 1em 0;
-    justify-content: center;
-    align-items: center;
+    padding-top: 1em;
+    margin: 0;
+    margin-bottom: 1em;
+    width: 100%;
 }
 
-.Dashboard-yearCalendar table,th, td {
+.Dashboard-yearCalendar table,th {
     border:none;
     border-spacing : 1px;
     border-collapse:separate;
@@ -35,8 +34,8 @@
 
 .Dashboard-yearCalendar td {
     border-radius: 3px;
-    width: 11px;
-    height: 11px;
+    width: 12px;
+    height: 12px;
     border: 1px solid black;
     
 }
