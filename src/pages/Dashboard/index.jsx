@@ -48,20 +48,11 @@ const Dashboard = () => {
         const month = dashboardDate.getMonth();
         const weeks = calendarData.jobs;
 
-        console.log(weeks);
-
-
         return (
         <div>
-            
             <YearCalendar calendarData={calendarData} handleClick={handleYearCalendarClick}/>
-            
-            <h3 className="Dashboard-monthCalendar text-uppercase">
-                {MONTHNAME[month+1]}
-            </h3>
-            {/*}
-            <MonthCalendar weeks={weeks} />
-            */}
+            <h3 className="Dashboard-monthCalendar text-uppercase">{MONTHNAME[month+1]}</h3>
+            {/*<MonthCalendar weeks={weeks} />*/}
         </div>)
     };
 

@@ -5,25 +5,11 @@ import "./Dashboard.css";
 import { Calendar } from "antd";
 
 const YearCalendar = ({calendarData, handleClick}) => {
+    const {jobs, absences, period, user} = calendarData;
+    const {from, to} = period;
 
-    console.log("CALENDAR", calendarData);
-
-    function translateCalendarDataIntoDays() {
-        const calendarDaysForJob = new Map();        
-        calendarData.jobs.map((job) => {
-            const key = `${job.date} ${job.morning}`;
-            const value = calendarDaysForJob.has(key) ? [...calendarDaysForJob.get(key), job] : [job];
-            calendarDaysForJob.set(key, value);
-        });
-        const calendarDaysForAbsence = new Map();        
-        calendarData.absences.map((absence) => {
-            const key = `${absence.from} ${absence.length}`;
-            const value = calendarDaysForAbsence.has(key) ? [...calendarDaysForAbsence.get(key), absence] : [absence];
-            calendarDaysForAbsence.set(key, value);
-        });
-
-        return {jobs: calendarDaysForJob, absences: calendarDaysForAbsence};
-    }
+    //console.log("CALENDAR", calendarData);
+    console.log(user, from, to, jobs, absences);
 
 
 
@@ -67,7 +53,7 @@ const YearCalendar = ({calendarData, handleClick}) => {
     )};
     */
 
-    const calendarDays = translateCalendarDataIntoDays();
+    
 
     return (
         <div className="Dashboard-yearCalendar d-none d-md-block">
@@ -84,7 +70,7 @@ const YearCalendar = ({calendarData, handleClick}) => {
                         : null;
                     return (
                         <div key={idx} className="col">
-                            {printMonth(month.month_index, month.weeks, style)}
+                            {/*printMonth(month.month_index, month.weeks, style)*/}
                         </div>
                     );
                 })}
@@ -94,13 +80,13 @@ const YearCalendar = ({calendarData, handleClick}) => {
 };
 
 YearCalendar.propTypes = {
-    user: PropTypes.shape({
-        id: PropTypes.number,
-        fullName: PropTypes.string
-    }),
-    period: PropTypes.string,
     calendarData: PropTypes.shape({
-        absences: PropTypes.arrayOf(PropTypes.shape({
+        user: PropTypes.shape({
+            id: PropTypes.number,
+            fullName: PropTypes.string
+        }),
+        period: PropTypes.string,
+        absences: PropTypes.objectOf(PropTypes.shape({
             from: PropTypes.date,
             to: PropTypes.date,
             length: PropTypes.number,
@@ -109,7 +95,7 @@ YearCalendar.propTypes = {
             halfday: PropTypes.bool,
             note: PropTypes.string
         })),
-        jobs: PropTypes.arrayOf(PropTypes.shape({
+        jobs: PropTypes.objectOf(PropTypes.shape({
             week: PropTypes.string, 
             date: PropTypes.date,
             morning: PropTypes.bool,
@@ -135,8 +121,8 @@ YearCalendar.defaultProps = {
             fullName: "No Name"
         },
         period: "1970-01-01 - 1970-01-01",
-        jobs: [],
-        absences: []
+        jobs: {},
+        absences: {}
     }
 }
 
