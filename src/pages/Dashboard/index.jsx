@@ -29,12 +29,14 @@ const Dashboard = () => {
 
     async function getCalendarData() {
         setFetchingCalendarData(true);
-        //const data = await axios.get(API_URL);
-        const data = jsonData;
-        setCalendarData((prev) => {
-            setFetchingCalendarData(false);
-            return data;
-        });
+        axios
+            .get("http://127.0.0.1:3000/api/users/4/calendar")
+            .then(response => response.data)
+            .then(data => setCalendarData(prev => {
+                setFetchingCalendarData(false);
+                return data;
+            }))
+            .catch(err => console.log("ERROR :", err));
     }
 
     useEffect(() => {
@@ -44,14 +46,22 @@ const Dashboard = () => {
     
     const RenderCalendars = () => {
         const month = dashboardDate.getMonth();
-        const weeks = calendarData.months[month].weeks;
+        const weeks = calendarData.jobs;
+
+        console.log(weeks);
+
+
         return (
         <div>
+            
             <YearCalendar calendarData={calendarData} handleClick={handleYearCalendarClick}/>
+            
             <h3 className="Dashboard-monthCalendar text-uppercase">
                 {MONTHNAME[month+1]}
             </h3>
+            {/*}
             <MonthCalendar weeks={weeks} />
+            */}
         </div>)
     };
 

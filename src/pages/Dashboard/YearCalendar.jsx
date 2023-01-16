@@ -2,13 +2,38 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { absenceColor, jobColor, getDateYMDFormated, MONTHNAME } from "../../helpers/helpers";
 import "./Dashboard.css";
+import { Calendar } from "antd";
 
 const YearCalendar = ({calendarData, handleClick}) => {
 
+    console.log("CALENDAR", calendarData);
+
+    function translateCalendarDataIntoDays() {
+        const calendarDaysForJob = new Map();        
+        calendarData.jobs.map((job) => {
+            const key = `${job.date} ${job.morning}`;
+            const value = calendarDaysForJob.has(key) ? [...calendarDaysForJob.get(key), job] : [job];
+            calendarDaysForJob.set(key, value);
+        });
+        const calendarDaysForAbsence = new Map();        
+        calendarData.absences.map((absence) => {
+            const key = `${absence.from} ${absence.length}`;
+            const value = calendarDaysForAbsence.has(key) ? [...calendarDaysForAbsence.get(key), absence] : [absence];
+            calendarDaysForAbsence.set(key, value);
+        });
+
+        return {jobs: calendarDaysForJob, absences: calendarDaysForAbsence};
+    }
+
+
+
+    /*
     const handleClickOnCalendar = (monthIndex) => {
         handleClick(monthIndex);
     }
+    */
 
+    /*
     const printMonth = (monthIndex, weeks, style) => {
         
         return (
@@ -40,6 +65,9 @@ const YearCalendar = ({calendarData, handleClick}) => {
             </table>
         </div>
     )};
+    */
+
+    const calendarDays = translateCalendarDataIntoDays();
 
     return (
         <div className="Dashboard-yearCalendar d-none d-md-block">
@@ -66,48 +94,49 @@ const YearCalendar = ({calendarData, handleClick}) => {
 };
 
 YearCalendar.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.number,
+        fullName: PropTypes.string
+    }),
+    period: PropTypes.string,
     calendarData: PropTypes.shape({
-        year: PropTypes.number,
-        months: PropTypes.arrayOf(PropTypes.shape({
-            month_index: PropTypes.number, 
-            weeks: PropTypes.arrayOf(PropTypes.shape({
-                date: PropTypes.string, 
-                jobs: PropTypes.shape({
-                    1: PropTypes.string,
-                    2: PropTypes.string,
-                    3: PropTypes.string,
-                    4: PropTypes.string,
-                    5: PropTypes.string
-                }),
-                absences: PropTypes.shape({
-                    1: PropTypes.string,
-                    2: PropTypes.string,
-                    3: PropTypes.string,
-                    4: PropTypes.string,
-                    5: PropTypes.string
-                }),
-                tasks: PropTypes.array
-            }))
+        absences: PropTypes.arrayOf(PropTypes.shape({
+            from: PropTypes.date,
+            to: PropTypes.date,
+            length: PropTypes.number,
+            type: PropTypes.string,
+            validated: PropTypes.bool,
+            halfday: PropTypes.bool,
+            note: PropTypes.string
+        })),
+        jobs: PropTypes.arrayOf(PropTypes.shape({
+            week: PropTypes.string, 
+            date: PropTypes.date,
+            morning: PropTypes.bool,
+            note: PropTypes.string,
+            service: PropTypes.shape({
+                id: PropTypes.number,
+                name: PropTypes.string,
+                location: PropTypes.string
+            }),
+            works: PropTypes.arrayOf(PropTypes.shape({
+                id: PropTypes.number,
+                name: PropTypes.string
+            })),
+            updated: PropTypes.date
         }))
     })
 }
 
 YearCalendar.defaultProps = {
     calendarData: {
-        year: (new Date()).getFullYear(),
-        months: [
-            {
-                month_index: (new Date().getMonth()+1),
-                weeks: [
-                    {
-                        date: getDateYMDFormated(),
-                        jobs: {1: "", 2: "", 3: "", 4: "", 5: ""},
-                        absences: {1: "", 2: "", 3: "", 4: "", 5: ""},
-                        tasks: []
-                    }
-                ]
-            }
-        ]
+        user: {
+            id: -1,
+            fullName: "No Name"
+        },
+        period: "1970-01-01 - 1970-01-01",
+        jobs: [],
+        absences: []
     }
 }
 
